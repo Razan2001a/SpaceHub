@@ -1,0 +1,115 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+{% endblock %}
+
+{% block title %}{% if request.session.lang == 'en' %}Create Account{% else %}إنشاء حساب{% endif %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow border-0 rounded-4">
+            <div class="card-body p-4" {% if request.session.lang == 'en' %}dir="ltr" style="text-align:left;"{% endif %}>
+                <h3 class="text-center mb-4 fw-bold">
+                    {% if request.session.lang == 'en' %}Create New Account{% else %}إنشاء حساب جديد{% endif %}
+                </h3>
+                <form method="post">
+                    {% csrf_token %}
+
+                    {% if request.session.lang == 'en' %}
+                        <!-- English Labels -->
+                        {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label">
+                                {% if field.name == 'username' %}Username
+                                {% elif field.name == 'email' %}Email
+                                {% elif field.name == 'password1' %}Password
+                                {% elif field.name == 'password2' %}Confirm Password
+                                {% elif field.name == 'role' %}Account Type
+                                {% else %}{{ field.label }}{% endif %}
+                            </label>
+                            {% if field.field.widget.input_type == 'radio' %}
+                                <div class="d-flex gap-4">
+                                    {% for choice in field %}
+                                        <div class="form-check">
+                                            {{ choice.tag }}
+                                            <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                                {% if choice.choice_label == 'مالك مساحة' %}Space Owner
+                                                {% elif choice.choice_label == 'مستأجر' %}Tenant
+                                                {% else %}{{ choice.choice_label }}{% endif %}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+                            {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-warning w-100 py-2 fw-bold text-dark">
+                            Create Account
+                        </button>
+                    {% else %}
+                        <!-- Arabic Labels -->
+                        {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label">
+                                {% if field.name == 'username' %}اسم المستخدم
+                                {% elif field.name == 'email' %}البريد الإلكتروني
+                                {% elif field.name == 'password1' %}كلمة المرور
+                                {% elif field.name == 'password2' %}تأكيد كلمة المرور
+                                {% elif field.name == 'role' %}نوع الحساب
+                                {% else %}{{ field.label }}{% endif %}
+                            </label>
+                            {% if field.field.widget.input_type == 'radio' %}
+                                <div class="d-flex gap-4">
+                                    {% for choice in field %}
+                                        <div class="form-check">
+                                            {{ choice.tag }}
+                                            <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                                {{ choice.choice_label }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+                            {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-warning w-100 py-2 fw-bold text-dark">
+                            إنشاء الحساب
+                        </button>
+                    {% endif %}
+
+                </form>
+                <hr>
+                <p class="text-center mb-0">
+                    {% if request.session.lang == 'en' %}
+                        Already have an account?
+                        <a href="{% url 'accounts:login' %}" class="text-dark fw-bold">Sign In</a>
+                    {% else %}
+                        لديك حساب؟
+                        <a href="{% url 'accounts:login' %}" class="text-dark fw-bold">سجّل دخولك</a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('input[type=text], input[type=email], input[type=password]').forEach(el => {
+    el.classList.add('form-control');
+});
+</script>
+{% endblock %}
