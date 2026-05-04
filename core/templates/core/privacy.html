@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{% if request.session.lang == 'en' %}Privacy Policy{% else %}سياسة الخصوصية{% endif %}{% endblock %}
+
+{% block content %}
+<div class="legal-page">
+
+  <div class="legal-header">
+    <div class="section-label">{% if request.session.lang == 'en' %}LEGAL{% else %}قانوني{% endif %}</div>
+    <h1>{% if request.session.lang == 'en' %}Privacy Policy{% else %}سياسة الخصوصية{% endif %}</h1>
+    <p>{% if request.session.lang == 'en' %}Last updated: January 2026{% else %}آخر تحديث: يناير 2026{% endif %}</p>
+  </div>
+
+  <div class="legal-content">
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}1. Information We Collect{% else %}1. المعلومات التي نجمعها{% endif %}</h3>
+      <p>
+        {% if request.session.lang == 'en' %}
+        We collect information you provide directly to us, such as when you create an account, make a booking, or contact us for support. This includes your name, email address, phone number, and payment information.
+        {% else %}
+        نجمع المعلومات التي تقدمها لنا مباشرة، مثل عند إنشاء حساب أو إجراء حجز أو التواصل معنا للحصول على الدعم. يشمل ذلك اسمك وعنوان بريدك الإلكتروني ورقم هاتفك ومعلومات الدفع.
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}2. How We Use Your Information{% else %}2. كيف نستخدم معلوماتك{% endif %}</h3>
+      <p>
+        {% if request.session.lang == 'en' %}
+        We use the information we collect to provide, maintain, and improve our services, process transactions, send you technical notices and support messages, and respond to your comments and questions.
+        {% else %}
+        نستخدم المعلومات التي نجمعها لتقديم خدماتنا وصيانتها وتحسينها، ومعالجة المعاملات، وإرسال الإشعارات التقنية ورسائل الدعم، والرد على تعليقاتك وأسئلتك.
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}3. Information Sharing{% else %}3. مشاركة المعلومات{% endif %}</h3>
+      <p>
+        {% if request.session.lang == 'en' %}
+        We do not share your personal information with third parties except as described in this policy. We may share your information with space owners to facilitate bookings, or with service providers who assist us in operating our platform.
+        {% else %}
+        لا نشارك معلوماتك الشخصية مع أطراف ثالثة إلا كما هو موضح في هذه السياسة. قد نشارك معلوماتك مع ملاك المساحات لتسهيل الحجوزات، أو مع مزودي الخدمات الذين يساعدوننا في تشغيل منصتنا.
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}4. Data Security{% else %}4. أمان البيانات{% endif %}</h3>
+      <p>
+        {% if request.session.lang == 'en' %}
+        We take reasonable measures to help protect your personal information from loss, theft, misuse, and unauthorized access. All payment transactions are encrypted using SSL technology.
+        {% else %}
+        نتخذ تدابير معقولة للمساعدة في حماية معلوماتك الشخصية من الضياع والسرقة وسوء الاستخدام والوصول غير المصرح به. جميع معاملات الدفع مشفرة باستخدام تقنية SSL.
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}5. Contact Us{% else %}5. تواصل معنا{% endif %}</h3>
+      <p>
+        {% if request.session.lang == 'en' %}
+        If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@spacehub.sa">privacy@spacehub.sa</a>
+        {% else %}
+        إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى التواصل معنا على <a href="mailto:privacy@spacehub.sa">privacy@spacehub.sa</a>
+        {% endif %}
+      </p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

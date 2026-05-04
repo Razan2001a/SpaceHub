@@ -1,0 +1,87 @@
+<footer>
+    <div class="container">
+        <div class="row gy-4">
+
+            <!-- Brand -->
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-brand">
+                    <i class="fas fa-building"></i> Space<span>Hub</span>
+                </div>
+                <p class="footer-desc">
+                    {% if request.session.lang == 'en' %}
+                        Premium co-working spaces designed for focus, flexibility, and community.
+                    {% else %}
+                        مساحات عمل مميزة مصممة للتركيز والمرونة والمجتمع.
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Navigate -->
+            <div class="col-lg-2 col-md-6">
+                <div class="footer-title">
+                    {% if request.session.lang == 'en' %}NAVIGATE{% else %}روابط{% endif %}
+                </div>
+                <ul class="footer-links">
+                    <li><a href="{% url 'core:home' %}">{% if request.session.lang == 'en' %}Home{% else %}الرئيسية{% endif %}</a></li>
+                    <li><a href="{% url 'spaces:list' %}">{% if request.session.lang == 'en' %}Spaces{% else %}المساحات{% endif %}</a></li>
+                    {% if user.is_authenticated %}
+                  <li><a href="#">{% if request.session.lang == 'en' %}Bookings{% else %}الحجوزات{% endif %}</a></li>
+                    <li><a href="{% url 'accounts:dashboard' %}">{% if request.session.lang == 'en' %}Dashboard{% else %}لوحة التحكم{% endif %}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Cities -->
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-title">
+                    {% if request.session.lang == 'en' %}CITIES{% else %}المدن{% endif %}
+                </div>
+                <ul class="footer-links">
+                    <li><a href="{% url 'spaces:list' %}?city=riyadh">{% if request.session.lang == 'en' %}Riyadh{% else %}الرياض{% endif %}</a></li>
+                    <li><a href="{% url 'spaces:list' %}?city=jeddah">{% if request.session.lang == 'en' %}Jeddah{% else %}جدة{% endif %}</a></li>
+                    <li><a href="{% url 'spaces:list' %}?city=makkah">{% if request.session.lang == 'en' %}Makkah{% else %}مكة المكرمة{% endif %}</a></li>
+                    <li><a href="{% url 'spaces:list' %}?city=dammam">{% if request.session.lang == 'en' %}Dammam{% else %}الدمام{% endif %}</a></li>
+                    <li><a href="{% url 'spaces:list' %}?city=madinah">{% if request.session.lang == 'en' %}Madinah{% else %}المدينة المنورة{% endif %}</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-title">
+                    {% if request.session.lang == 'en' %}STAY UPDATED{% else %}ابقَ على اطلاع{% endif %}
+                </div>
+                <p class="footer-desc">
+                    {% if request.session.lang == 'en' %}
+                        Get the latest spaces and offers.
+                    {% else %}
+                        احصل على أحدث المساحات والعروض.
+                    {% endif %}
+                </p>
+                <div class="footer-email">
+                    <input type="email" placeholder="{% if request.session.lang == 'en' %}Your email{% else %}بريدك الإلكتروني{% endif %}">
+                    <button><i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2026 SpaceHub. {% if request.session.lang == 'en' %}All rights reserved.{% else %}جميع الحقوق محفوظة.{% endif %}</span>
+            <div class="footer-bottom-links">
+                <a href="{% url 'core:privacy' %}">{% if request.session.lang == 'en' %}Privacy Policy{% else %}سياسة الخصوصية{% endif %}</a>
+                <a href="{% url 'core:terms' %}">{% if request.session.lang == 'en' %}Terms of Service{% else %}شروط الخدمة{% endif %}</a>
+            </div>
+        </div>
+
+        <!-- Watermark -->
+        <div class="footer-watermark">SPACEHUB</div>
+
+    </div>
+</footer>

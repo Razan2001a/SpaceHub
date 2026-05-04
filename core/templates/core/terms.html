@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{% if request.session.lang == 'en' %}Terms of Service{% else %}شروط الخدمة{% endif %}{% endblock %}
+
+{% block content %}
+<div class="legal-page">
+
+  <div class="legal-header">
+    <div class="section-label">{% if request.session.lang == 'en' %}LEGAL{% else %}قانوني{% endif %}</div>
+    <h1>{% if request.session.lang == 'en' %}Terms of Service{% else %}شروط الخدمة{% endif %}</h1>
+    <p>{% if request.session.lang == 'en' %}Last updated: January 2026{% else %}آخر تحديث: يناير 2026{% endif %}</p>
+  </div>
+
+  <div class="legal-content">
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}1. Acceptance of Terms{% else %}1. قبول الشروط{% endif %}</h3>
+      <p>{% if request.session.lang == 'en' %}By accessing and using SpaceHub, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our platform.{% else %}من خلال الوصول إلى SpaceHub واستخدامه، فإنك تقبل وتوافق على الالتزام بشروط وأحكام هذه الاتفاقية. إذا كنت لا توافق على هذه الشروط، يرجى عدم استخدام منصتنا.{% endif %}</p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}2. Use of Service{% else %}2. استخدام الخدمة{% endif %}</h3>
+      <p>{% if request.session.lang == 'en' %}SpaceHub provides an online platform connecting space owners with individuals and businesses looking to rent workspaces. You agree to use our services only for lawful purposes and in accordance with these terms.{% else %}يوفر SpaceHub منصة إلكترونية تربط ملاك المساحات بالأفراد والشركات الراغبين في استئجار مساحات عمل. توافق على استخدام خدماتنا للأغراض القانونية فقط ووفقاً لهذه الشروط.{% endif %}</p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}3. Bookings & Payments{% else %}3. الحجوزات والمدفوعات{% endif %}</h3>
+      <p>{% if request.session.lang == 'en' %}All bookings are subject to availability and confirmation by the space owner. Payments are processed securely through our platform. Cancellation policies vary by space and are clearly stated on each listing.{% else %}تخضع جميع الحجوزات للتوفر والتأكيد من قبل مالك المساحة. تتم معالجة المدفوعات بأمان عبر منصتنا. تختلف سياسات الإلغاء حسب المساحة وتُذكر بوضوح في كل قائمة.{% endif %}</p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}4. User Responsibilities{% else %}4. مسؤوليات المستخدم{% endif %}</h3>
+      <p>{% if request.session.lang == 'en' %}You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.{% else %}أنت مسؤول عن الحفاظ على سرية بيانات اعتماد حسابك وعن جميع الأنشطة التي تحدث تحت حسابك. توافق على إخطارنا فوراً بأي استخدام غير مصرح به لحسابك.{% endif %}</p>
+    </div>
+
+    <div class="legal-section">
+      <h3>{% if request.session.lang == 'en' %}5. Contact{% else %}5. التواصل{% endif %}</h3>
+      <p>{% if request.session.lang == 'en' %}For questions about these Terms, contact us at <a href="mailto:legal@spacehub.sa">legal@spacehub.sa</a>{% else %}للأسئلة حول هذه الشروط، تواصل معنا على <a href="mailto:legal@spacehub.sa">legal@spacehub.sa</a>{% endif %}</p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,364 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+{% endblock %}
+
+{% block messages_wrapper %}{% endblock %}
+
+{% block title %}SpaceHub — {% if request.session.lang == 'en' %}Your Perfect Space{% else %}منصة تأجير المساحات{% endif %}{% endblock %}
+
+{% block main_wrapper %}
+<main class="home-main">
+
+<!-- ═══════ HERO 1 — Image ═══════ -->
+<section class="h-img">
+  <div class="h-img-overlay"></div>
+  <div class="h-img-content">
+    <div class="h-img-badge">● {% if request.session.lang == 'en' %}MODERN WORKSPACES · 2026{% else %}مساحات عصرية · 2026{% endif %}</div>
+    <h2>
+      {% if request.session.lang == 'en' %}
+        Work Smarter<br><span>Book Instantly</span>
+      {% else %}
+        اعمل بذكاء<br><span>احجز فوراً</span>
+      {% endif %}
+    </h2>
+    <p>{% if request.session.lang == 'en' %}Premium co-working spaces in your city, reserved in seconds.{% else %}مساحات عمل مشتركة في مدينتك، محجوزة في ثوانٍ.{% endif %}</p>
+    <div class="h-btns">
+      <a href="{% url 'spaces:list' %}" class="h-btn-primary">{% if request.session.lang == 'en' %}Explore Spaces{% else %}تصفح المساحات{% endif %}</a>
+      {% if not user.is_authenticated %}
+      <a href="{% url 'accounts:register' %}" class="h-btn-secondary">{% if request.session.lang == 'en' %}Get Started Free{% else %}ابدأ مجاناً{% endif %}</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="h-img-stats">
+    <div class="h-img-stat">
+      <span class="h-stat-num">200+</span>
+      <span class="h-stat-lbl">{% if request.session.lang == 'en' %}Spaces Listed{% else %}مساحة متاحة{% endif %}</span>
+    </div>
+    <div class="h-img-stat">
+      <span class="h-stat-num">5,000+</span>
+      <span class="h-stat-lbl">{% if request.session.lang == 'en' %}Happy Members{% else %}عضو سعيد{% endif %}</span>
+    </div>
+    <div class="h-img-stat">
+      <span class="h-stat-num">5</span>
+      <span class="h-stat-lbl">{% if request.session.lang == 'en' %}Cities{% else %}مدن{% endif %}</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HERO 2 — Dark ═══════ -->
+<section class="h-dark">
+  <div class="h-dark-inner">
+    <div class="h-eyebrow">{% if request.session.lang == 'en' %}WHY SPACEHUB{% else %}لماذا سبيس هب{% endif %}</div>
+    <h1>
+      {% if request.session.lang == 'en' %}
+        Designed for focus<br>
+        <span>Built for flexibility</span><br>
+        Made for you
+      {% else %}
+        صُمِّم للتركيز<br>
+        <span>بُني للمرونة</span><br>
+        صُنع لك
+      {% endif %}
+    </h1>
+    <p>
+      {% if request.session.lang == 'en' %}
+        Whether you need a quiet desk for a few hours or a private office for your growing team SpaceHub has the perfect space waiting for you
+      {% else %}
+        سواء احتجت مكتباً هادئاً لساعات أو مساحة خاصة لفريقك SpaceHub لديه المساحة المثالية بانتظارك
+      {% endif %}
+    </p>
+    <div class="h-btns">
+      <a href="{% url 'spaces:list' %}" class="h-btn-primary">
+        {% if request.session.lang == 'en' %}Explore Spaces{% else %}تصفح المساحات{% endif %}
+      </a>
+      <a href="#how" class="h-btn-secondary">
+        {% if request.session.lang == 'en' %}How It Works{% else %}كيف يعمل{% endif %}
+      </a>
+    </div>
+  </div>
+
+  <div class="h-features">
+    <div class="h-feature">
+      <div class="h-feature-icon"><i class="fas fa-wifi"></i></div>
+      <div class="h-feature-text">
+        <strong>{% if request.session.lang == 'en' %}High-Speed WiFi{% else %}واي فاي عالي السرعة{% endif %}</strong>
+        <span>{% if request.session.lang == 'en' %}Always connected{% else %}متصل دائماً{% endif %}</span>
+      </div>
+    </div>
+    <div class="h-feature">
+      <div class="h-feature-icon"><i class="fas fa-calendar-check"></i></div>
+      <div class="h-feature-text">
+        <strong>{% if request.session.lang == 'en' %}Instant Booking{% else %}حجز فوري{% endif %}</strong>
+        <span>{% if request.session.lang == 'en' %}Reserve in seconds{% else %}احجز في ثوانٍ{% endif %}</span>
+      </div>
+    </div>
+    <div class="h-feature">
+      <div class="h-feature-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="h-feature-text">
+        <strong>{% if request.session.lang == 'en' %}Secure Access{% else %}وصول آمن{% endif %}</strong>
+        <span>{% if request.session.lang == 'en' %}Safe & private{% else %}آمن وخاص{% endif %}</span>
+      </div>
+    </div>
+    <div class="h-feature">
+      <div class="h-feature-icon"><i class="fas fa-clock"></i></div>
+      <div class="h-feature-text">
+        <strong>{% if request.session.lang == 'en' %}24/7 Available{% else %}متاح 24/7{% endif %}</strong>
+        <span>{% if request.session.lang == 'en' %}Any time, any day{% else %}في أي وقت{% endif %}</span>
+      </div>
+    </div>
+    <div class="h-feature">
+      <div class="h-feature-icon"><i class="fas fa-coffee"></i></div>
+      <div class="h-feature-text">
+        <strong>{% if request.session.lang == 'en' %}Free Coffee{% else %}قهوة مجانية{% endif %}</strong>
+        <span>{% if request.session.lang == 'en' %}Complimentary drinks{% else %}مشروبات مجانية{% endif %}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════ SPACES ═══════ -->
+<section class="h-spaces">
+  <div class="container">
+    <div class="h-spaces-header">
+      <div>
+        <div class="h-label">{% if request.session.lang == 'en' %}SPACES{% else %}المساحات{% endif %}</div>
+        <h2>
+          {% if request.session.lang == 'en' %}
+            Find Your Perfect<br>Working Environment
+          {% else %}
+            ابحث عن بيئة العمل<br>المثالية لك
+          {% endif %}
+        </h2>
+      </div>
+      <a href="{% url 'spaces:list' %}" class="h-view-all">{% if request.session.lang == 'en' %}View All Spaces{% else %}عرض كل المساحات{% endif %}</a>
+    </div>
+    <div class="h-spaces-grid">
+      <a href="{% url 'spaces:list' %}?type=office" class="h-space-card h-space-dark">
+        <div class="h-space-type">{% if request.session.lang == 'en' %}PRIVATE OFFICE{% else %}مكتب خاص{% endif %}</div>
+        <span class="h-space-badge">{% if request.session.lang == 'en' %}Most Popular{% else %}الأكثر طلباً{% endif %}</span>
+        <div class="h-space-info">
+          <h3>{% if request.session.lang == 'en' %}The Executive Suite{% else %}الجناح التنفيذي{% endif %}</h3>
+          <p><i class="fas fa-map-marker-alt"></i> {% if request.session.lang == 'en' %}Riyadh, Saudi Arabia{% else %}الرياض، المملكة العربية السعودية{% endif %}</p>
+          <div class="h-space-footer">
+            <span class="h-space-price">{% if request.session.lang == 'en' %}From 299 SAR{% else %}من 299 ر.س{% endif %}</span>
+            <span class="h-space-btn">{% if request.session.lang == 'en' %}Book Now →{% else %}احجز الآن ←{% endif %}</span>
+          </div>
+        </div>
+      </a>
+      <a href="{% url 'spaces:list' %}?type=coworking" class="h-space-card h-space-light">
+        <div class="h-space-type">{% if request.session.lang == 'en' %}HOT DESK{% else %}مكتب مشترك{% endif %}</div>
+        <span class="h-space-badge-light">{% if request.session.lang == 'en' %}Available Now{% else %}متاح الآن{% endif %}</span>
+        <div class="h-space-info-light">
+          <h3>{% if request.session.lang == 'en' %}Flex Desk{% else %}مكتب مرن{% endif %}</h3>
+          <p><i class="fas fa-map-marker-alt"></i> {% if request.session.lang == 'en' %}Jeddah, Saudi Arabia{% else %}جدة، المملكة العربية السعودية{% endif %}</p>
+          <div class="h-space-footer">
+            <span class="h-space-price-dark">{% if request.session.lang == 'en' %}From 12 SAR/hr{% else %}من 12 ر.س/ساعة{% endif %}</span>
+            <span class="h-space-btn-dark">{% if request.session.lang == 'en' %}Book Now →{% else %}احجز الآن ←{% endif %}</span>
+          </div>
+        </div>
+      </a>
+      <a href="{% url 'spaces:list' %}?type=studio" class="h-space-card h-space-light">
+        <div class="h-space-type">{% if request.session.lang == 'en' %}STUDIO{% else %}استوديو{% endif %}</div>
+        <span class="h-space-badge-light">{% if request.session.lang == 'en' %}2 Left{% else %}متبقي 2{% endif %}</span>
+        <div class="h-space-info-light">
+          <h3>{% if request.session.lang == 'en' %}The Studio{% else %}الاستوديو الإبداعي{% endif %}</h3>
+          <p><i class="fas fa-map-marker-alt"></i> {% if request.session.lang == 'en' %}Dammam, Saudi Arabia{% else %}الدمام، المملكة العربية السعودية{% endif %}</p>
+          <div class="h-space-footer">
+            <span class="h-space-price-dark">{% if request.session.lang == 'en' %}From 199 SAR{% else %}من 199 ر.س{% endif %}</span>
+            <span class="h-space-btn-dark">{% if request.session.lang == 'en' %}Book Now →{% else %}احجز الآن ←{% endif %}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section class="h-about" id="how">
+  <div class="container">
+    <div class="h-about-grid">
+      <div class="h-about-text">
+        <div class="h-label">{% if request.session.lang == 'en' %}ABOUT SPACEHUB{% else %}عن سبيس هب{% endif %}</div>
+        <h2>
+          {% if request.session.lang == 'en' %}
+            The smarter way to find<br>your workspace
+          {% else %}
+            الطريقة الأذكى للعثور<br>على مساحة عملك
+          {% endif %}
+        </h2>
+        <p>
+          {% if request.session.lang == 'en' %}
+            SpaceHub is Saudi Arabia's leading workspace rental platform. We connect professionals, startups, and teams with premium spaces — from private offices to creative studios — across the Kingdom's top cities.
+          {% else %}
+            سبيس هب هي المنصة الرائدة لتأجير مساحات العمل في المملكة العربية السعودية. نربط المحترفين والشركات الناشئة والفرق بمساحات مميزة — من المكاتب الخاصة إلى الاستوديوهات الإبداعية — في أبرز مدن المملكة.
+          {% endif %}
+        </p>
+        <div class="h-about-features">
+          <div class="h-about-feature">
+            <i class="fas fa-bolt"></i>
+            <div>
+              <strong>{% if request.session.lang == 'en' %}Instant Booking{% else %}حجز فوري{% endif %}</strong>
+              <span>{% if request.session.lang == 'en' %}Reserve in seconds, no paperwork{% else %}احجز في ثوانٍ بدون أوراق{% endif %}</span>
+            </div>
+          </div>
+          <div class="h-about-feature">
+            <i class="fas fa-star"></i>
+            <div>
+              <strong>{% if request.session.lang == 'en' %}Verified Spaces{% else %}مساحات موثّقة{% endif %}</strong>
+              <span>{% if request.session.lang == 'en' %}Every space is reviewed and rated{% else %}كل مساحة مراجعة ومقيّمة{% endif %}</span>
+            </div>
+          </div>
+          <div class="h-about-feature">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+              <strong>{% if request.session.lang == 'en' %}Secure Payments{% else %}مدفوعات آمنة{% endif %}</strong>
+              <span>{% if request.session.lang == 'en' %}Mada, Apple Pay & more{% else %}مدى، Apple Pay وأكثر{% endif %}</span>
+            </div>
+          </div>
+          <div class="h-about-feature">
+            <i class="fas fa-headset"></i>
+            <div>
+              <strong>{% if request.session.lang == 'en' %}24/7 Support{% else %}دعم 24/7{% endif %}</strong>
+              <span>{% if request.session.lang == 'en' %}We're always here to help{% else %}نحن دائماً هنا للمساعدة{% endif %}</span>
+            </div>
+          </div>
+        </div>
+        <a href="{% url 'spaces:list' %}" class="h-btn-primary" style="display:inline-block;margin-top:1.5rem;">
+          {% if request.session.lang == 'en' %}Start Exploring{% else %}ابدأ الاستكشاف{% endif %}
+        </a>
+      </div>
+      <div class="h-about-visual">
+        <div class="h-about-img"></div>
+        <div class="h-about-stat-card">
+          <div class="h-about-stat-num">98%</div>
+          <div class="h-about-stat-lbl">{% if request.session.lang == 'en' %}Satisfaction Rate{% else %}نسبة الرضا{% endif %}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA IMAGE ═══════ -->
+<section class="h-cta-img">
+  <div class="h-cta-img-visual"></div>
+  <div class="h-cta-img-text">
+    <h2>
+      {% if request.session.lang == 'en' %}
+        Reserve your desk<br><em>anytime</em><br>anywhere
+      {% else %}
+        احجز مكتبك<br><em>في أي وقت</em><br>في أي مكان
+      {% endif %}
+    </h2>
+    <a href="{% url 'spaces:list' %}" class="h-btn-primary">
+      {% if request.session.lang == 'en' %}Book a Space{% else %}احجز مساحة{% endif %}
+    </a>
+  </div>
+</section>
+
+<!-- ═══════ REVIEWS ═══════ -->
+<section class="h-reviews">
+  <div class="container">
+    <div class="h-reviews-header">
+      <span class="h-label-dark">{% if request.session.lang == 'en' %}MEMBER REVIEWS{% else %}آراء الأعضاء{% endif %}</span>
+      <h2>
+        {% if request.session.lang == 'en' %}
+          Spaces loved by<br>real professionals.
+        {% else %}
+          مساحات يحبها<br>المحترفون الحقيقيون
+        {% endif %}
+      </h2>
+    </div>
+    <div class="h-reviews-grid">
+      <div class="h-review-card">
+        <div class="h-reviewer">
+          <div class="h-reviewer-avatar">س</div>
+          <div>
+            <div class="h-reviewer-name">{% if request.session.lang == 'en' %}Sarah M.{% else %}سارة م.{% endif %}</div>
+            <div class="h-reviewer-role">{% if request.session.lang == 'en' %}Freelance Designer{% else %}مصممة مستقلة{% endif %}</div>
+          </div>
+        </div>
+        <div class="h-stars">★★★★★</div>
+        <p>{% if request.session.lang == 'en' %}"SpaceHub completely changed how I work. Fast WiFi, great coffee, and the most productive atmosphere."{% else %}"غيّر SpaceHub طريقة عملي كلياً. واي فاي سريع، قهوة رائعة، وأجواء إنتاجية لا مثيل لها."{% endif %}</p>
+      </div>
+      <div class="h-review-card">
+        <div class="h-reviewer">
+          <div class="h-reviewer-avatar">م</div>
+          <div>
+            <div class="h-reviewer-name">{% if request.session.lang == 'en' %}Mohammed A.{% else %}محمد أ.{% endif %}</div>
+            <div class="h-reviewer-role">{% if request.session.lang == 'en' %}Product Manager{% else %}مدير منتج{% endif %}</div>
+          </div>
+        </div>
+        <div class="h-stars">★★★★★</div>
+        <p>{% if request.session.lang == 'en' %}"The Flex Desk option is perfect for my hybrid schedule. Always clean, quiet, and well-equipped."{% else %}"المكتب المرن مثالي لجدولي المتغير. دائماً نظيف وهادئ ومجهز بالكامل."{% endif %}</p>
+      </div>
+      <div class="h-review-card">
+        <div class="h-reviewer">
+          <div class="h-reviewer-avatar">ن</div>
+          <div>
+            <div class="h-reviewer-name">{% if request.session.lang == 'en' %}Nora K.{% else %}نورة خ.{% endif %}</div>
+            <div class="h-reviewer-role">{% if request.session.lang == 'en' %}Marketing Consultant{% else %}استشارية تسويق{% endif %}</div>
+          </div>
+        </div>
+        <div class="h-stars">★★★★★</div>
+        <p>{% if request.session.lang == 'en' %}"I've tried every co-working platform. SpaceHub wins on quality, price, and ease of use."{% else %}"جربت كل منصات العمل المشترك. SpaceHub يتفوق في الجودة والسعر وسهولة الاستخدام."{% endif %}</p>
+      </div>
+      <div class="h-review-card">
+        <div class="h-reviewer">
+          <div class="h-reviewer-avatar">أ</div>
+          <div>
+            <div class="h-reviewer-name">{% if request.session.lang == 'en' %}Ahmed S.{% else %}أحمد س.{% endif %}</div>
+            <div class="h-reviewer-role">{% if request.session.lang == 'en' %}Startup Founder{% else %}مؤسس شركة ناشئة{% endif %}</div>
+          </div>
+        </div>
+        <div class="h-stars">★★★★★</div>
+        <p>{% if request.session.lang == 'en' %}"Booked a private office for my team within minutes. The process is seamless and exceeded expectations."{% else %}"حجزت مكتباً خاصاً لفريقي في دقائق. العملية سلسة وتجاوزت كل التوقعات."{% endif %}</p>
+      </div>
+      <div class="h-review-card">
+        <div class="h-reviewer">
+          <div class="h-reviewer-avatar">ف</div>
+          <div>
+            <div class="h-reviewer-name">{% if request.session.lang == 'en' %}Fatima R.{% else %}فاطمة ر.{% endif %}</div>
+            <div class="h-reviewer-role">{% if request.session.lang == 'en' %}Software Engineer{% else %}مهندسة برمجيات{% endif %}</div>
+          </div>
+        </div>
+        <div class="h-stars">★★★★☆</div>
+        <p>{% if request.session.lang == 'en' %}"Great variety of spaces. The Studio is my personal favorite — super creative vibe."{% else %}"تنوع رائع في المساحات. الاستوديو هو المفضل لدي — أجواء إبداعية رائعة."{% endif %}</p>
+      </div>
+      <div class="h-review-card">
+        <div class="h-reviewer">
+          <div class="h-reviewer-avatar">خ</div>
+          <div>
+            <div class="h-reviewer-name">{% if request.session.lang == 'en' %}Khalid T.{% else %}خالد ت.{% endif %}</div>
+            <div class="h-reviewer-role">{% if request.session.lang == 'en' %}UX Researcher{% else %}باحث تجربة مستخدم{% endif %}</div>
+          </div>
+        </div>
+        <div class="h-stars">★★★★★</div>
+        <p>{% if request.session.lang == 'en' %}"Listed my space in under 10 minutes and had my first booking the same day."{% else %}"أضفت مساحتي في أقل من 10 دقائق وحصلت على أول حجز في نفس اليوم."{% endif %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.remove('transparent');
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+      navbar.classList.add('transparent');
+    }
+  });
+  navbar.classList.add('transparent');
+</script>
+{% endblock %}

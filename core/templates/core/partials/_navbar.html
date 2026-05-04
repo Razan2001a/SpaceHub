@@ -1,0 +1,131 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg">
+    <div class="container nav-container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="{% url 'core:home' %}">
+            <i class="fas fa-building"></i> Space<span>Hub</span>
+        </a>
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+
+            <!--center links-->
+            <ul class="navbar-nav nav-links-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'core:home' %}">
+                        {% if request.session.lang == 'en' %}Home{% else %}الرئيسية{% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'spaces:list' %}">
+                        {% if request.session.lang == 'en' %}Spaces{% else %}المساحات{% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'core:contact' %}">
+                        {% if request.session.lang == 'en' %}Contact Us{% else %}تواصل معنا{% endif %}
+                    </a>
+                </li>
+
+
+
+
+
+
+              {% if user.is_authenticated %}
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            {% if request.session.lang == 'en' %}Bookings{% else %}الحجوزات{% endif %}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            {% if request.session.lang == 'en' %}Favorites{% else %}المفضلة{% endif %}
+        </a>
+    </li>
+
+
+
+
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            {% if request.session.lang == 'en' %}Favorites{% else %}المفضلة{% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:dashboard' %}">
+                            {% if request.session.lang == 'en' %}Dashboard{% else %}لوحة التحكم{% endif %}
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <!-- أزرار -->
+            <ul class="navbar-nav nav-buttons align-items-lg-center gap-2">
+                <li class="nav-item">
+                    <a href="{% url 'accounts:set_lang' %}?lang={% if request.session.lang == 'en' %}ar{% else %}en{% endif %}&next={{ request.path }}"
+                       class="lang-btn">
+                        {% if request.session.lang == 'en' %}ع{% else %}EN{% endif %}
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                    {% if user.profile.is_owner %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'spaces:add' %}">
+                            <i class="fas fa-plus"></i>
+                            {% if request.session.lang == 'en' %}Add Space{% else %}أضف مساحة{% endif %}
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-user" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'accounts:profile' %}">
+                                    <i class="fas fa-user me-2"></i>
+                                    {% if request.session.lang == 'en' %}Profile{% else %}الملف الشخصي{% endif %}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'accounts:dashboard' %}">
+                                    <i class="fas fa-tachometer-alt me-2"></i>
+                                    {% if request.session.lang == 'en' %}Dashboard{% else %}لوحة التحكم{% endif %}
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="{% url 'accounts:logout' %}">
+                                    <i class="fas fa-sign-out-alt me-2"></i>
+                                    {% if request.session.lang == 'en' %}Logout{% else %}تسجيل الخروج{% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="btn-nav-outline" href="{% url 'accounts:login' %}">
+                            {% if request.session.lang == 'en' %}Sign In{% else %}تسجيل الدخول{% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-nav-solid" href="{% url 'accounts:register' %}">
+                            {% if request.session.lang == 'en' %}Book Now{% else %}احجز الآن{% endif %}
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</nav>
