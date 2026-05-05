@@ -10,9 +10,9 @@
 |---|---|
 | **Project Name** | SpaceHub |
 | **Description** | A co-working space booking platform where Owners can list their spaces and Tenants can browse, filter, and book them. Built with Django, covering authentication, authorization, ORM relationships, transactions, pagination, media files, and Django Admin. |
-| **User Stories** | 📄 [View User Stories](#) <!-- link here --> |
-| **UML Diagram** | 📊 [View UML](#) <!-- link here --> |
-| **Wireframe** | 🖼️ [View Wireframe](#) <!--  link here --> |
+| **User Stories** | 📄 [View User Stories](docs/SpaceHub_User_Stories.pdf) |
+| **UML Diagram** | 📊 [View UML](docs/SpaceHub_UML_.pdf) |
+| **Wireframe** | 🖼️ [View Wireframe](<docs/SpaceHub_wireframe.pdf) |
 
 ---
 
